@@ -1,0 +1,35 @@
+body
+{
+  background-color: #43464C;
+}
+
+h1
+{
+  text-align: center;
+  padding-top: 5%;
+}
+
+footer
+{
+  text-align: center;
+}
+
+
+
+.form-control
+{
+  background-color:#919791;
+  text-emphasis-color: #000000;
+  border-color: #000000;
+  border-width: medium;
+}
+
+#input_dati_registration
+{
+  max-width: 15%;
+}
+
+#footer
+{
+  align-self: center;
+}
