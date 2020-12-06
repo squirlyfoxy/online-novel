@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,24 +14,46 @@
   <body>
 
 
-    <header>
+    header>
+      <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <a class="navbar-brand" href="index.html" >Home</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-    </header>
-
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="">Archivio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="" tabindex="-1" aria-disabled="true">Classifiche</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="">Search</button>
+            </form>
+          </div>
+        </nav>
+      </div>
+      
     <h1>Log in</h1>
 
     <div>
-      <div class="container" id="input_dati_registration" align="center">
+      <div class="container" id="input_dati_login" align="center">
         <form>
           <div class="form-group">
-              <label for="InputEmail1">Email</label>
-              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+              <h5>Email</h5>
+              <input type="email" class="form-control" id="InputEmailLogin" aria-describedby="emailHelp">
           </div>
           <div class="form-group">
-              <label for="InputPassword1">Password</label>
-              <input type="password" class="form-control" id="InputPassword1">
+              <h5>Passworld</h5>
+              <input type="password" class="form-control" id="InputPasswordLogin">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btnx btn-dark">Invia</button>
+          <a class="linkReidirizzamento" href="registrazione.php"> <p>se non sei registrato clicca qui</p></a>
         </form>
       </div>
     </div>
