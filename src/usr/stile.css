@@ -1,6 +1,6 @@
 body
 {
-  background-color: #43464C;
+  background-color: #BDC5D9;
 }
 
 h1
@@ -9,22 +9,38 @@ h1
   padding-top: 5%;
 }
 
+
 footer
 {
   text-align: center;
 }
 
+.linkReidirizzamento
+{
+  font-size: 15pt;
+  color: #000000;
+}
 
+.btnx
+{
+  width: 100%
+;}
 
 .form-control
 {
-  background-color:#919791;
+  background-color:#D3DCF2;
   text-emphasis-color: #000000;
   border-color: #000000;
   border-width: medium;
+  font-size: 15pt;
 }
 
-#input_dati_registration
+#input_dati_registratione
+{
+  max-width: 15%;
+}
+
+#input_dati_login
 {
   max-width: 15%;
 }

@@ -1,0 +1,25 @@
+h2
+{
+  text-align: center;
+  color: #000000;
+  font-family: "Akronim";
+  font-weight: bold;
+  padding-top: 10%;
+
+}
+
+body
+{
+  background-color: #BDC5D9;
+}
+
+footer
+{
+  text-align: center;
+}
+
+
+#footer
+{
+  align-self: center;
+}
