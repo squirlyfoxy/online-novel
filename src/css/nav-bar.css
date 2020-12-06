@@ -9,3 +9,13 @@ img#right
     margin-left: 5px;
     margin-right: 10px;
 }
+
+h2
+{
+    text-align: left;
+    color: #000000;
+    font-family: "Akronim";
+    font-weight: bold;
+    padding-top: 80px;
+    padding-left: 15%;
+}
