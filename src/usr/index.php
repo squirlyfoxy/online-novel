@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="stile.css">
+    <link rel="stylesheet" href="../css/styleUsr.css">
 
     <title>Online Novels</title>
   </head>
@@ -17,7 +17,7 @@
     header>
       <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <a class="navbar-brand" href="index.html" >Home</a>
+          <a class="navbar-brand" href="../index.php" >Home</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -38,7 +38,7 @@
           </div>
         </nav>
       </div>
-      
+
     <h1>Log in</h1>
 
     <div>
@@ -56,6 +56,7 @@
           <a class="linkReidirizzamento" href="registrazione.php"> <p>se non sei registrato clicca qui</p></a>
         </form>
       </div>
+
     </div>
 
     <footer class="container" >
