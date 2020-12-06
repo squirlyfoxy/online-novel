@@ -77,7 +77,7 @@
                         if($is_logged == false) //Non sono loggato, dai la possibilità di farlo
                         {
                             echo '
-                                <a class="nav-link" id="right" href="../usr">Login/Registrati</a>';
+                                <a class="nav-link" id="right" href="../usr/">Login/Registrati</a>';
                         } else
                         {
                             //Informazioni dell'utente loggato
