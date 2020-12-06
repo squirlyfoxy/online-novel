@@ -1,3 +1,46 @@
+<?php
+    // Programmer: Leonardo Baldazzi (@squirlyfoxy), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
+
+    include_once("../php/server-connector.php");
+
+    session_start();
+
+    ///
+    /// Codice per controllare se siamo loggati oppure no
+    /// Codice per avere l'icona dell'utente
+    ///
+
+    $usr_name = "";
+    $usr_id = 0;
+    $user_icon = "../img/usr.png";
+    $is_logged;
+
+    $last_series = array();
+    $popular_series = array();
+
+    //TODO: Raccogli tutte le serie aggiunte per ultime (last 10) e quelle più popolari (con più likes)
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        //PER POST RICEVO LE INFORMAZIONI DELL'UTENTE
+
+        //Controlla se sono giuste confrontandole con il database
+    }
+
+    //Se non ricevo nulla vuol dire che non sono loggato, quindi:
+    if($usr_name == "" && $usr_name == "")
+    {
+        $is_logged = false;
+    } else if($usr_name != "" && $usr_name != "")
+    {
+        $is_logged = true;
+    } else
+    {
+        $is_logged = false;
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -20,12 +63,30 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="">Archivio</a>
+                <a class="nav-link" href="novels/index.php">Archivio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="" tabindex="-1" aria-disabled="true">Classifiche</a>
               </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                    <?php
+                        echo '<li class="nav-item" >';
+
+                        if($is_logged == false) //Non sono loggato, dai la possibilità di farlo
+                        {
+                            echo '
+                                <a class="nav-link" id="right" href="../usr">Login/Registrati</a>';
+                        } else
+                        {
+                            //Informazioni dell'utente loggato
+                            echo '
+                                <a class="nav-link" id="right" href="../usr/about/">'.$usr_name.'</a>';
+                        }
+                        echo '<img id="right" src="'.$user_icon.'" width="32" />';
+                        echo '</li>';
+                    ?>
+                </ul>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="">Search</button>
@@ -38,49 +99,29 @@
     <h2>Serie Popolari</h2>
 
     <div class="container container-xl" style ="width: 100%; border:0px solid black; overflow-x:scroll; overflow-y:hidden; padding-top: 20%; text-align: center;">
+      <div class="popular-series">
+          <?php
+              //Codice per scrivere a video la lista delle serie popolari
+              foreach($s as $popular_series)
+              {
 
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item">1</li>
-          <li class="list-group-item">2</li>
-          <li class="list-group-item">3</li>
-          <li class="list-group-item">1</li>
-          <li class="list-group-item">2</li>
-          <li class="list-group-item">3</li>
-          <li class="list-group-item">1</li>
-          <li class="list-group-item">2</li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-          <li class="list-group-item"> <a href="#">1</a> </li>
-          <li class="list-group-item"> <a href="#">2</a> </li>
-          <li class="list-group-item"> <a href="#">3</a> </li>
-
-
-        </ul>
-
+              }
+          ?>
+      </div>
     </div>
 
+
+      <div class="">
+        <div class="popular-series">
+           <?php
+               //Codice per scrivere a video la lista delle serie popolari
+               foreach($s as $popular_series)
+               {
+
+               }
+           ?>
+       </div>
+      </div>
 
 
 
