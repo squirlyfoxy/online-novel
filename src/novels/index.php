@@ -1,4 +1,6 @@
 <?php
+    // Programmer: Leonardo Baldazzi (@squirlyfoxy), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
+
     session_start();
 
     ///
@@ -70,7 +72,7 @@
                             echo '
                                 <a class="nav-link" id="right" href="../usr/about/">'.$usr_name.'</a>';
                         }
-                        echo '<img src="'.$user_icon.'" width="32"  style="margin-left: 5px; margin-right: 10px;"/>';
+                        echo '<img id="right" src="'.$user_icon.'" width="32" />';
                         echo '</li>';
                     ?>
                     </ul>   

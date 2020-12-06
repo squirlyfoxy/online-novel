@@ -1,4 +1,6 @@
 <?php
+    // Programmer: Leonardo Baldazzi (@squirlyfoxy), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
+
     session_start();
 
     ///
@@ -75,11 +77,11 @@
         <link rel="stylesheet" href="../../css/nav-bar.css">
 
         <title>Online Novels - 
-        <?php
-            //Codice per visualizzare il nome del romanzo
-            echo $novel_name;
-        ?>
-            </title>
+            <?php
+                //Codice per visualizzare il nome del romanzo
+                echo $novel_name;
+            ?>
+        </title>
     </head>
     <body>
         <!--- MENU !--->
@@ -118,7 +120,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Ricerca" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="">
-                        <img src="../img/src.png" width="32" />
+                        <img src="../../img/src.png" width="32" />
                     </button>
                 </form>
             </div>

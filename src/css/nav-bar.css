@@ -3,3 +3,9 @@
     display: inline-block;
     vertical-align: top;
 }
+
+img#right
+{
+    margin-left: 5px;
+    margin-right: 10px;
+}
