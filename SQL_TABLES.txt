@@ -1,0 +1,25 @@
+Codici per creare le tabelle dentro al server sql
+
+NON CAMBIARE I PARAMETRI DENTRO server-connector.php
+
+Tabella per le novels
+CREATE TABLE `novels` (
+  `id` varchar(6) NOT NULL,
+  `nome` text NOT NULL,
+  `copertina` text NOT NULL,
+  `autore` text NOT NULL,
+  `translators` text NOT NULL,
+  `text` longtext NOT NULL,
+  `added_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `likes` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+COMMIT;
+
+Tabella che contiene gli utenti
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `usr_name` text NOT NULL,
+  `usr_email` text NOT NULL,
+  `usr_password` text NOT NULL,
+  `usr_image` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
