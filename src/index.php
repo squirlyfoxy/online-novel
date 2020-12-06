@@ -2,11 +2,12 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Online Novel</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
   </head>
+
   <body>
     <header>
       <div>
@@ -36,9 +37,53 @@
 
     <h2>Serie Popolari</h2>
 
-    <div class="">
+    <div class="container container-xl" style ="width: 100%; border:0px solid black; overflow-x:scroll; overflow-y:hidden; padding-top: 20%; text-align: center;">
+
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item">1</li>
+          <li class="list-group-item">2</li>
+          <li class="list-group-item">3</li>
+          <li class="list-group-item">1</li>
+          <li class="list-group-item">2</li>
+          <li class="list-group-item">3</li>
+          <li class="list-group-item">1</li>
+          <li class="list-group-item">2</li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          <li class="list-group-item"> <a href="#">1</a> </li>
+          <li class="list-group-item"> <a href="#">2</a> </li>
+          <li class="list-group-item"> <a href="#">3</a> </li>
+          
+
+        </ul>
 
     </div>
+
+
+
+
 
     <footer class="container" >
            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom ">
