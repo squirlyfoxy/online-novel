@@ -20,21 +20,65 @@
     $last_series = array();
     $popular_series = array();
 
+    //Raccogli tutte le serie aggiunte per ultime (last 10) e quelle più popolari (con più likes)
     $date = new DateTime(date('Y-m-d H:i:s'));
     $date->modify("-".$DAYS_TO_REMOVE." days");
-    $current_date = $date->format('Y-m-d');
 
-    //TODO: Raccogli tutte le serie aggiunte per ultime (last 10) e quelle più popolari (con più likes)
+    $current_date = $date->format('Y-m-d H:i:s');
+    
     //Ultime serie caricate
-    if($last_series_result = $connection->query("SELECT * FROM novels WHERE `added_at` >= ".$current_date))
+    if($last_series_result = $connection->query("SELECT * FROM novels WHERE `added_at` >= '".$current_date."'"))
     {
-        //TODO: Popola l'array
+        //Popola l'array
+        while($row = $last_series_result->fetch_assoc())
+        {
+            $last_series[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
+        }
     }
 
     //Serie popolari
     if($popular_series_result = $connection->query("SELECT * FROM novels WHERE 1"))
     {
-        //TODO: Aggiungi dentro popular series tutte le novels con likes >= X
+        $popular_series_tmp;
+
+        //Aggiungi dentro popular_series tutte le novels con likes >= X
+        while($row = $popular_series_result->fetch_assoc())
+        {
+            $popular_series_tmp[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
+        }
+
+        $tmp_likes = $popular_series_tmp[0]['Likes'];
+        $tmp;
+        $pos = 0;
+
+        //Ordino l'array per numero di likes
+        //FIX: Controlla sta roba che sicuro è sbagliata
+        foreach($popular_series_tmp as $key_tmp=>$s_tmp)
+        {
+            foreach($popular_series_tmp as $key=>$s)
+            {
+                if((int)$s['Likes'] > $tmp_likes)
+                {
+                    //Switch
+                    $tmp_likes = (int)$s['Likes'];
+
+                    if($pos > 0)
+                    {
+                        $tmp = $popular_series_tmp[$pos];
+                        $popular_series_tmp[$pos] = $popular_series_tmp[$pos - 1];
+                        $popular_series_tmp[$pos - 1] = $tmp;
+                    }
+                }
+
+                $pos++;
+            }
+            $pos = 0;
+        }
+
+        foreach($popular_series_tmp as $key=>$s)
+        {
+            $popular_series[] = array("Id"=>$s['Id'], "Nome"=>$s['Nome'], "Copertina"=>$s['Copertina'], "Autore"=>$s['Autore'], "Traduttori"=>$s['Traduttori'], "Testo"=>$s['Testo'], "Data_Aggiunta"=>$s['Data_Aggiunta'], "Likes"=>$s['Likes']);
+        }
     }
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -88,22 +132,19 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php
-                        echo '<li class="nav-item" >';
-
-                        if($is_logged == false) //Non sono loggato, dai la possibilità di farlo
-                        {
-                            echo '
-                                <a class="nav-link" id="right" href="../usr/">Login/Registrati</a>';
-                        } else
-                        {
-                            //Informazioni dell'utente loggato
-                            echo '
-                                <a class="nav-link" id="right" href="../usr/about/">'.$usr_name.'</a>';
-                        }
-                        echo '<img id="right" src="'.$user_icon.'" width="32" />';
-                        echo '</li>';
-                    ?>
+                    <li class="nav-item">
+                        <?php
+                            if($is_logged == false) //Non sono loggato, dai la possibilità di farlo
+                            {
+                                echo '<a class="nav-link" id="right" href="../usr/">Login/Registrati</a>';
+                            } else
+                            {
+                                //Informazioni dell'utente loggato
+                                echo '<a class="nav-link" id="right" href="../usr/about/">'.$usr_name.'</a>';
+                            }
+                            echo '<img id="right" src="'.$user_icon.'" width="32" />';
+                        ?>
+                    </li>
                 </ul>   
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Ricerca" aria-label="Search">
@@ -118,9 +159,13 @@
         <div class="popular-series">
             <?php
                 //Codice per scrivere a video la lista delle serie popolari
-                foreach($s as $popular_series)
+                if(!(empty($popular_series)))
                 {
-
+                    foreach($popular_series as $key=>$s)
+                    {
+                        echo 'Copertina: '.$s['Copertina'].' , Nome: '.$s['Nome'].' , Likes: '.$s['Likes'];
+                        echo'<br>';
+                    }
                 }
             ?>
         </div>
@@ -129,9 +174,13 @@
         <div class="last-series">
             <?php
                 //Codice per scrivere a video la lista delle serie aggiunte di recente
-                foreach($s as $last_series)
+                if(!(empty($last_series)))
                 {
-                    
+                    foreach($last_series as $key=>$s)
+                    {
+                        echo 'Copertina: '.$s['Copertina'].' , Nome: '.$s['Nome'].' , Likes: '.$s['Likes'];
+                        echo'<br>';
+                    }
                 }
             ?>
         </div>
