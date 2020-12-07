@@ -32,7 +32,7 @@
     }
 
     //Serie popolari
-    if($popular_series_result = $connection->query("SELECT * FROM novels WHERE 1")
+    if($popular_series_result = $connection->query("SELECT * FROM novels WHERE 1"))
     {
         //TODO: Aggiungi dentro popular series tutte le novels con likes >= X
     }
