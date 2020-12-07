@@ -34,6 +34,8 @@
         {
             $last_series[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
         }
+
+        $last_series_result->free();
     }
 
     //Serie popolari
@@ -41,7 +43,7 @@
     {
         $popular_series_tmp;
 
-        //Aggiungi dentro popular_series tutte le novels con likes >= X
+        //Aggiungi dentro popular_series tutte le novels della query
         while($row = $popular_series_result->fetch_assoc())
         {
             $popular_series_tmp[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
@@ -79,6 +81,8 @@
         {
             $popular_series[] = array("Id"=>$s['Id'], "Nome"=>$s['Nome'], "Copertina"=>$s['Copertina'], "Autore"=>$s['Autore'], "Traduttori"=>$s['Traduttori'], "Testo"=>$s['Testo'], "Data_Aggiunta"=>$s['Data_Aggiunta'], "Likes"=>$s['Likes']);
         }
+
+        $popular_series_result->free();
     }
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
