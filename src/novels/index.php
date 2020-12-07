@@ -10,6 +10,8 @@
     /// Codice per avere l'icona dell'utente
     ///
 
+    $DAYS_TO_REMOVE = 7;
+
     $usr_name = "";
     $usr_id = 0;
     $user_icon = "../img/usr.png";
@@ -18,7 +20,22 @@
     $last_series = array();
     $popular_series = array();
 
+    $date = new DateTime(date('Y-m-d H:i:s'));
+    $date->modify("-".$DAYS_TO_REMOVE." days");
+    $current_date = $date->format('Y-m-d');
+
     //TODO: Raccogli tutte le serie aggiunte per ultime (last 10) e quelle più popolari (con più likes)
+    //Ultime serie caricate
+    if($last_series_result = $connection->query("SELECT * FROM novels WHERE `added_at` >= ".$current_date))
+    {
+        //TODO: Popola l'array
+    }
+
+    //Serie popolari
+    if($popular_series_result = $connection->query("SELECT * FROM novels WHERE 1")
+    {
+        //TODO: Aggiungi dentro popular series tutte le novels con likes >= X
+    }
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
