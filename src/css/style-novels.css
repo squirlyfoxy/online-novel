@@ -36,7 +36,7 @@ footer
 
 .series-row
 {
-    overflow-x: hidden;
+    overflow-x: visible;
     overflow-y: hidden;
     white-space: nowrap;
 }
