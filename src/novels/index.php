@@ -227,6 +227,25 @@
         </div>
 
         <!--- SCRIPTS !--->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            $( window ).resize(function()
+            {
+                (function($) {
+                    $.fn.hasWidthScrollBar = function() {
+                        return this.get(0).scrollWidth > this.width();
+                    }
+                })(jQuery);
+
+                if($(".series-row").hasWidthScrollBar())
+                {
+                    $(".series-row").css("overflow-x", "scroll");
+                } else
+                {
+                    $(".series-row").css("overflow-x", "hidden");
+                }
+            });
+        </script>
 
         <!--- BOOTSTRAP !--->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
