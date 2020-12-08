@@ -168,8 +168,17 @@
                 {
                     foreach($popular_series as $key=>$s)
                     {
-                        echo 'Copertina: '.$s['Copertina'].' , Nome: '.$s['Nome'].' , Likes: '.$s['Likes'];
-                        echo'<br>';
+                        //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
+                        echo '<div class="card" style="width: 15rem;">
+                                <div class="view overlay">
+                                    <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
+                                        <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    Nome: '.$s['Nome'].' , Likes: '.$s['Likes'].'
+                                </div>
+                            </div>';
                     }
                 }
             ?>
@@ -183,8 +192,17 @@
                 {
                     foreach($last_series as $key=>$s)
                     {
-                        echo 'Copertina: '.$s['Copertina'].' , Nome: '.$s['Nome'].' , Likes: '.$s['Likes'];
-                        echo'<br>';
+                        //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
+                        echo '<div class="card" style="width: 15rem;">
+                                <div class="view overlay">
+                                    <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
+                                        <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    Nome: '.$s['Nome'].' , Likes: '.$s['Likes'].'
+                                </div>
+                            </div>';
                     }
                 }
             ?>

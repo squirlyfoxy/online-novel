@@ -1,0 +1,2 @@
+COME CARICHIAMO IMMAGINI? Usanto la funzione php designata carico l'immagine e la metto dentro ./img/upload
+COME VISUALIZZIAMO LE IMMAGINI CARICATE? Dentro al server SQL sta una colonna che indica il persorso, prendo pquesto percorso e lo metto dentro al tag img
