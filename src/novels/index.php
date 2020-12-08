@@ -17,7 +17,7 @@
     $user_icon = "../img/usr.png";
     $is_logged;
 
-    //TODO: Devono essere solo i primi 20
+    //Devono essere solo i primi 10
     $last_series = array();
     $popular_series = array();
 
@@ -30,11 +30,15 @@
     //Ultime serie caricate
     if($last_series_result = $connection->query("SELECT * FROM novels WHERE `added_at` >= '".$current_date."'"))
     {
+        $last_series_tmp = array();
+
         //Popola l'array
         while($row = $last_series_result->fetch_assoc())
         {
-            $last_series[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
+            $last_series_tmp[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
         }
+
+        $last_series = array_slice($last_series_tmp, 0 , 10);
 
         $last_series_result->free();
     }
@@ -55,7 +59,6 @@
         $pos = 0;
 
         //Ordino l'array per numero di likes
-        //FIX: Controlla sta roba che sicuro è sbagliata
         foreach($popular_series_tmp as $key_tmp=>$s_tmp)
         {
             foreach($popular_series_tmp as $key=>$s)
@@ -78,10 +81,7 @@
             $pos = 0;
         }
 
-        foreach($popular_series_tmp as $key=>$s)
-        {
-            $popular_series[] = array("Id"=>$s['Id'], "Nome"=>$s['Nome'], "Copertina"=>$s['Copertina'], "Autore"=>$s['Autore'], "Traduttori"=>$s['Traduttori'], "Testo"=>$s['Testo'], "Data_Aggiunta"=>$s['Data_Aggiunta'], "Likes"=>$s['Likes']);
-        }
+        $popular_series = array_slice($popular_series_tmp, 0 , 10);
 
         $popular_series_result->free();
     }
