@@ -10,6 +10,8 @@
     /// Codice per avere l'icona dell'utente
     ///
 
+    // CODE REVISION: Non copiare il mio codice che dopo succede un gran casino, lavora nel tuo :)
+
     $usr_name = "";
     $usr_id = 0;
     $user_icon = "../img/usr.png";
