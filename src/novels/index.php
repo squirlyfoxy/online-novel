@@ -17,6 +17,7 @@
     $user_icon = "../img/usr.png";
     $is_logged;
 
+    //TODO: Devono essere solo i primi 20
     $last_series = array();
     $popular_series = array();
 
@@ -169,6 +170,8 @@
                     foreach($popular_series as $key=>$s)
                     {
                         //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
+
+                        //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
                         echo '<div class="card" style="width: 15rem;">
                                 <div class="view overlay">
                                     <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
@@ -193,6 +196,8 @@
                     foreach($last_series as $key=>$s)
                     {
                         //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
+
+                        //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
                         echo '<div class="card" style="width: 15rem;">
                                 <div class="view overlay">
                                     <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
