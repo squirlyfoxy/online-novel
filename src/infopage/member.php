@@ -10,6 +10,8 @@
     /// Codice per avere l'icona dell'utente
     ///
 
+    // CODE REVISION: Questa parte di codice php in questa pagian è inutile
+
     $DAYS_TO_REMOVE = 7;
 
     $usr_name = "";
