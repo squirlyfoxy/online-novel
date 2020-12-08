@@ -116,8 +116,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
         <!--- CUSTOM CSS !--->
-        <link rel="stylesheet" href="../css/nav-bar.css?version=2">
-        <link rel="stylesheet" href="../css/style-novels.css?version=2">
+        <link rel="stylesheet" href="../css/nav-bar.css?version=234234">
+        <link rel="stylesheet" href="../css/style-novels.css?version=345345">
 
         <title>Online Novels - Romanzi</title>
     </head>
@@ -161,56 +161,69 @@
             </div>
         </nav>
 
-        <h2>Serie Popolari</h2>
-        <div class="popular-series">
-            <?php
-                //Codice per scrivere a video la lista delle serie popolari
-                if(!(empty($popular_series)))
-                {
-                    foreach($popular_series as $key=>$s)
-                    {
-                        //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
+        <div class="container-fluid">
+            <div class="popular-series">
+                <h2>Serie Popolari</h2>
+                <div class="series-row">
+                        <?php
+                            //Codice per scrivere a video la lista delle serie popolari
+                            if(!(empty($popular_series)))
+                            {
+                                foreach($popular_series as $key=>$s)
+                                {
+                                    //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
 
-                        //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
-                        echo '<div class="card" style="width: 15rem;">
-                                <div class="view overlay">
-                                    <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
-                                        <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    Nome: '.$s['Nome'].' , Likes: '.$s['Likes'].'
-                                </div>
-                            </div>';
-                    }
-                }
-            ?>
-        </div>
+                                    //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
+                                    echo '<div class="card" style="width: 15rem;">
+                                                <div class="view overlay">
+                                                    <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
+                                                        <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="text-center">
+                                                        '.$s['Nome'].'
+                                                    </div>
+                                                    Likes: '.$s['Likes'].'
+                                                </div>
+                                            </div>';
+                                }
+                            }
+                        ?>
+                </div>
+            </div>
 
-        <h2>Ultime Aggiunte</h2>
-        <div class="last-series">
-            <?php
-                //Codice per scrivere a video la lista delle serie aggiunte di recente
-                if(!(empty($last_series)))
-                {
-                    foreach($last_series as $key=>$s)
-                    {
-                        //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
+            <div class="last-series">
+                <h2>Ultime Aggiunte</h2>
+                <div class="series-row">
+                    
+                        <?php
+                            //Codice per scrivere a video la lista delle serie aggiunte di recente
+                            if(!(empty($last_series)))
+                            {
+                                foreach($last_series as $key=>$s)
+                                {
+                                    //Stile di test, position_frame sarà uguale alla posizione attuale letta dell'utente
 
-                        //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
-                        echo '<div class="card" style="width: 15rem;">
-                                <div class="view overlay">
-                                    <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
-                                        <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    Nome: '.$s['Nome'].' , Likes: '.$s['Likes'].'
-                                </div>
-                            </div>';
-                    }
-                }
-            ?>
+                                    //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
+                                    echo '<div class="card" style="width: 15rem;">
+                                            <div class="view overlay">
+                                                <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
+                                                    <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
+                                                </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="text-center">
+                                                    '.$s['Nome'].'
+                                                </div>
+                                                Likes: '.$s['Likes'].'
+                                            </div>
+                                        </div>';
+                                }
+                            }
+                        ?>
+                </div>
+            </div>
         </div>
 
         <!--- SCRIPTS !--->

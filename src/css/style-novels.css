@@ -33,3 +33,25 @@ footer
 {
   align-self: center;
 }
+
+.series-row
+{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.popular-series
+{
+  padding-top: 15px;
+}
+
+.last-series
+{
+  padding-top: 15px;
+}
+
+.card
+{
+    display: inline-block;
+}
