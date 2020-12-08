@@ -83,6 +83,7 @@
 
         <!--- CUSTOM CSS !--->
         <link rel="stylesheet" href="../../css/nav-bar.css">
+        <link rel="stylesheet" href="../../css/style-novels.css">
 
         <title>Online Novels - 
             <?php
