@@ -115,14 +115,14 @@
     <title>Online Novel</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
 
   <body>
     <header>
       <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <a class="navbar-brand" href="index.php" >Home</a>
+          <a class="navbar-brand" href="../index.php" >Home</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -130,10 +130,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="novels/index.php">Archivio</a>
+                <a class="nav-link" href="../novels/index.php">Archivio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="classifiche/index.php" tabindex="-1" aria-disabled="true">Classifiche</a>
+                <a class="nav-link" href="../classifiche/index.php" tabindex="-1" aria-disabled="true">Classifiche</a>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -143,7 +143,7 @@
                         if($is_logged == false) //Non sono loggato, dai la possibilità di farlo
                         {
                             echo '
-                                <a class="nav-link" id="right" href="usr/index.php"> Login/Registrati </a>';
+                                <a class="nav-link" id="right" href="../usr/index.php"> Login/Registrati </a>';
                         } else
                         {
                             //Informazioni dell'utente loggato
@@ -163,52 +163,15 @@
       </div>
     </header>
 
-    <h2>Serie Popolari</h2>
-
-    <div class="container container-xl" style ="width: 100%; border:0px solid black; overflow-x:scroll; overflow-y:hidden; padding-top: 20%; text-align: center;">
-      <div class="popular-series">
-        <?php
-              //Codice per scrivere a video la lista delle serie popolari
-              if(!(empty($popular_series)))
-              {
-                  foreach($popular_series as $key=>$s)
-                  {
-                      echo 'Copertina: '.$s['Copertina'].' , Nome: '.$s['Nome'].' , Likes: '.$s['Likes'];
-                      echo'<br>';
-                  }
-              }
-          ?>
-      </div>
-    </div>
-
-    <h2>Ultime Aggiunte</h2>
-        <div class="last-series">
-            <?php
-                //Codice per scrivere a video la lista delle serie aggiunte di recente
-                if(!(empty($last_series)))
-                {
-                    foreach($last_series as $key=>$s)
-                    {
-                        echo 'Copertina: '.$s['Copertina'].' , Nome: '.$s['Nome'].' , Likes: '.$s['Likes'];
-                        echo'<br>';
-                    }
-                }
-            ?>
-        </div>
-
-
-
-
-
     <footer class="container" >
            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom ">
              <div class="collapse navbar-collapse" id="navbarSupportedContentFooter">
              <ul class="navbar-nav mr-auto">
              <li class="nav-item">
-               <a class="nav-link" href="infopage/member.php">membri</a>
+               <a class="nav-link" href="member.php">membri</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="infopage/contacts.php" tabindex="-1" aria-disabled="true">contatti</a>
+               <a class="nav-link" href="contacts.php" tabindex="-1" aria-disabled="true">contatti</a>
              </li>
              </ul>
 

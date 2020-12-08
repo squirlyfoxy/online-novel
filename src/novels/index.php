@@ -63,10 +63,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="">Archivio</a>
+                <a class="nav-link" href="index.php">Archivio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="" tabindex="-1" aria-disabled="true">Classifiche</a>
+                <a class="nav-link" href="../classifiche/index.php" tabindex="-1" aria-disabled="true">Classifiche</a>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -102,10 +102,10 @@
              <div class="collapse navbar-collapse" id="navbarSupportedContentFooter">
              <ul class="navbar-nav mr-auto">
              <li class="nav-item">
-               <a class="nav-link" href="about_us.html">membri</a>
+               <a class="nav-link" href="../infopage/member.php">membri</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="donation.html" tabindex="-1" aria-disabled="true">contatti</a>
+               <a class="nav-link" href="../infopage/contacts.php" tabindex="-1" aria-disabled="true">contatti</a>
              </li>
              </ul>
 

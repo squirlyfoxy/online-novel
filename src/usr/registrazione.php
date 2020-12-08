@@ -14,31 +14,33 @@
   <body>
 
 
-  <header>
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="index.html" >Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <header>
+      <div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="">Archivio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="" tabindex="-1" aria-disabled="true">Classifiche</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="">Search</button>
-          </form>
-        </div>
-      </nav>
-    </div>
-  </header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <a class="navbar-brand" href="../index.php" >Home</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="../novels/index.php">Archivio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../classifiche/index.php" tabindex="-1" aria-disabled="true">Classifiche</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="">Search</button>
+            </form>
+          </div>
+        </nav>
+      </div>
+
+    </header>
 
 
     <h1>Registrati</h1>
@@ -73,10 +75,10 @@
              <div class="collapse navbar-collapse" id="navbarSupportedContentFooter">
              <ul class="navbar-nav mr-auto">
              <li class="nav-item">
-               <a class="nav-link" href="about_us.html">membri</a>
+               <a class="nav-link" href="../infopage/member.php">membri</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="donation.html" tabindex="-1" aria-disabled="true">contatti</a>
+               <a class="nav-link" href="../infopage/contacts.php" tabindex="-1" aria-disabled="true">contatti</a>
              </li>
              </ul>
 
