@@ -1,7 +1,7 @@
 <?php
     // Programmer: Leonardo Baldazzi (@squirlyfoxy), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
 
-    include_once("../php/server-connector.php");
+    include_once("php/server-connector.php");
 
     session_start();
 
@@ -146,13 +146,15 @@
                         {
                             echo '
                                 <a class="nav-link" id="right" href="usr/index.php"> Login/Registrati </a>';
+                            echo '<img id="right" src ="img/usr.png" width="32" />';
                         } else
                         {
                             //Informazioni dell'utente loggato
                             echo '
                                 <a class="nav-link" id="right" href="../usr/about/">'.$usr_name.'</a>';
+                                echo '<img id="right" src="'.$user_icon.'" width="32" />';
                         }
-                        echo '<img id="right" src="'.$user_icon.'" width="32" />';
+
                         echo '</li>';
                     ?>
                 </ul>
