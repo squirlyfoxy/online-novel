@@ -6,11 +6,6 @@
 
     session_start();
 
-    ///
-    /// Controlla all'inizio se sono loggato, se si lui si connetterà al database che contiene
-    /// l'ultima pagina.
-    ///
-
     // Variabili
     $novel_id = "";
     $novel_name = "";
@@ -77,6 +72,12 @@
     $user_icon = "../../img/usr.png";
     $is_logged;
 
+    ///
+    /// Codice per controllare se siamo loggati oppure no
+    /// Codice per avere l'icona dell'utente
+    ///
+
+    //TODO: Non useremo il post ma il session
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         //PER POST RICEVO LE INFORMAZIONI DELL'UTENTE
@@ -85,10 +86,10 @@
     }
 
     //Se non ricevo nulla vuol dire che non sono loggato, quindi:
-    if($usr_name == "" && $usr_name == "")
+    if($usr_name == "" && $usr_id == "")
     {
         $is_logged = false;
-    } else if($usr_name != "" && $usr_name != "")
+    } else if($usr_name != "" && $usr_id != "")
     {
         $is_logged = true;
     } else
@@ -106,8 +107,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
         <!--- CUSTOM CSS !--->
-        <link rel="stylesheet" href="../../css/nav-bar.css">
-        <link rel="stylesheet" href="../../css/style-novels.css">
+        <link rel="stylesheet" href="../../css/nav-bar.css?version=234234">
+        <link rel="stylesheet" href="../../css/style-novels.css?version=345345">
 
         <title>Online Novels - 
             <?php
@@ -173,9 +174,9 @@
         </div>
 
         <!--- SCRIPTS !--->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
         <!--- BOOTSTRAP !--->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     </body>
 </html>

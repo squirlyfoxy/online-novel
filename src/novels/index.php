@@ -5,10 +5,7 @@
 
     session_start();
 
-    ///
-    /// Codice per controllare se siamo loggati oppure no
-    /// Codice per avere l'icona dell'utente
-    ///
+
 
     $DAYS_TO_REMOVE = 7;
 
@@ -86,6 +83,12 @@
         $popular_series_result->free();
     }
 
+    ///
+    /// Codice per controllare se siamo loggati oppure no
+    /// Codice per avere l'icona dell'utente
+    ///
+
+    //Non useremo il post ma il session
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         //PER POST RICEVO LE INFORMAZIONI DELL'UTENTE
