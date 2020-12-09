@@ -46,7 +46,7 @@
         header("location: ../");
     }
 
-    //Connettersi al database per avere il nome del romanzo e viasualizzarlo a video
+    //Connettersi al database per avere le info romanzo e viasualizzarlo a video
     if($selected_novel_result = $connection->query("SELECT * FROM `novels` WHERE `id`='".$novel_id."'"))
     {
         while($row = $selected_novel_result->fetch_assoc())
@@ -66,8 +66,6 @@
         // Redirect a ../
         header("location: ../");
     }
-    
-    //TODO: Connettersi al database per avere il contenuto della pagina e visualizzarla
 
     ///
     /// Codice per controllare se siamo loggati oppure no
