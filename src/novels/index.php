@@ -32,7 +32,7 @@
         //Popola l'array
         while($row = $last_series_result->fetch_assoc())
         {
-            $last_series_tmp[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
+            $last_series_tmp[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['pdf_name'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
         }
 
         $last_series = array_slice($last_series_tmp, 0 , 10);
@@ -48,7 +48,7 @@
         //Aggiungi dentro popular_series tutte le novels della query
         while($row = $popular_series_result->fetch_assoc())
         {
-            $popular_series_tmp[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['text'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
+            $popular_series_tmp[] = array("Id"=>$row['id'], "Nome"=>$row['nome'], "Copertina"=>$row['copertina'], "Autore"=>$row['autore'], "Traduttori"=>$row['translators'], "Testo"=>$row['pdf_name'], "Data_Aggiunta"=>$row['added_at'], "Likes"=>$row['likes']);
         }
 
         $tmp_likes = $popular_series_tmp[0]['Likes'];
@@ -179,7 +179,7 @@
                                     //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
                                     echo '<div class="card" style="width: 15rem;">
                                                 <div class="view overlay">
-                                                    <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
+                                                    <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=1">
                                                         <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
                                                     </a>
                                                 </div>
@@ -211,7 +211,7 @@
                                     //TODO: In card-body aggiungere un'immagine per il like, dare uno stile migliore 
                                     echo '<div class="card" style="width: 15rem;">
                                             <div class="view overlay">
-                                                <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=0">
+                                                <a href="./visualizer/?novel_id='.$s['Id'].'&position_frame=1">
                                                     <img class="card-img-top" src="../img/upload/'.$s['Copertina'].'" alt="'.$s['Nome'].'">
                                                 </a>
                                             </div>
