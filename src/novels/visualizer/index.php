@@ -109,6 +109,7 @@
         <!--- CUSTOM CSS !--->
         <link rel="stylesheet" href="../../css/nav-bar.css?version=234234">
         <link rel="stylesheet" href="../../css/style-novels.css?version=345345">
+        <link rel="stylesheet" href="../../css/style-visualizer.css?version=345345">
 
         <title>Online Novels - 
             <?php
@@ -158,7 +159,14 @@
         </nav>
 
         <div class="container-fluid">
-            <div class="novel-info">
+            <div class="novel-info-desktop">
+                <?php
+                    //Visualizzare le info del romanzo
+                    echo "Nome: ".$novel_name.'<br>';
+                    echo "Autore: ".$novel_autor;
+                ?>
+            </div>
+            <div class="novel-info-phone">
                 <?php
                     //Visualizzare le info del romanzo
                     echo "Nome: ".$novel_name.'<br>';
@@ -197,9 +205,16 @@
                 pageNum = <?php echo $position_frame; ?>,
                 pageRendering = false,
                 pageNumPending = null,
-                scale = 1,
+                scale,
                 canvas = document.getElementById('novel-pdf'),
                 ctx = canvas.getContext('2d');
+
+            if($(document).width() >= 768)
+            {
+                scale = 1;
+            } else{
+                scale = 0.55;
+            }
 
             /**
              * Get page info from document, resize canvas accordingly, and render page.
@@ -210,7 +225,7 @@
                 
                     // Using promise to fetch the page
                     pdfDoc.getPage(num).then(function(page) {
-                    var viewport = page.getViewport({scale: scale});
+                    var viewport = page.getViewport({ scale: scale });
                     canvas.height = viewport.height;
                     canvas.width = viewport.width;
 
@@ -281,6 +296,24 @@
                 document.getElementById('page_count').textContent = pdfDoc.numPages;
 
                 // Initial/first page rendering
+                renderPage(pageNum);
+            });
+
+            //JQuey responsive
+
+
+            $(window).on('resize', function(){
+                var win = $(this); //this = window
+                //if (win.height() >= 820) { /* ... */ }
+                if (win.width() <= 768)
+                { 
+                    /* ... */ 
+                    scale = 0.55;
+                } else
+                {
+                    scale = 1;
+                }
+
                 renderPage(pageNum);
             });
         </script>

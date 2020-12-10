@@ -1,0 +1,33 @@
+.novel-txt
+{
+    text-align: center;
+}
+
+footer
+{
+    padding-top: 100px;
+}
+
+.novel-info-desktop
+{
+    display: inline;
+}
+
+.novel-info-phone
+{
+    display: none;
+}
+
+@media only screen and (max-width: 768px)
+{
+    .novel-info-desktop
+    {
+        display: none;
+    }
+
+    .novel-info-phone
+    {
+        display: inline;
+    }
+}
+
