@@ -109,7 +109,7 @@
         <!--- CUSTOM CSS !--->
         <link rel="stylesheet" href="../../css/nav-bar.css?version=234234">
         <link rel="stylesheet" href="../../css/style-novels.css?version=345345">
-        <link rel="stylesheet" href="../../css/style-visualizer.css?version=345345">
+        <link rel="stylesheet" href="../../css/style-visualizer.css?version=112">
 
         <title>Online Novels - 
             <?php
@@ -120,7 +120,7 @@
     </head>
     <body>
         <!--- MENU !--->
-        <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark sticky-top" id="navigator">
             <a class="navbar-brand" href="../../">Online Novels</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -139,11 +139,11 @@
                         <?php
                             if($is_logged == false) //Non sono loggato, dai la possibilità di farlo
                             {
-                                echo '<a class="nav-link" id="right" href="../usr">Login/Registrati</a>';
+                                echo '<a class="nav-link" id="right" href="../../usr">Login/Registrati</a>';
                             } else
                             {
                                 //Informazioni dell'utente loggato
-                                echo '<a class="nav-link" id="right" href="../usr/about/">'.$usr_name.'</a>';
+                                echo '<a class="nav-link" id="right" href="../../usr/about/">'.$usr_name.'</a>';
                             }
                             echo '<img src="'.$user_icon.'" width="32"  style="margin-left: 5px; margin-right: 10px;"/>';
                         ?>
@@ -165,28 +165,48 @@
                     echo "Nome: ".$novel_name.'<br>';
                     echo "Autore: ".$novel_autor;
                 ?>
+                <br>
             </div>
             <div class="novel-info-phone">
                 <?php
+                /*
                     //Visualizzare le info del romanzo
                     echo "Nome: ".$novel_name.'<br>';
                     echo "Autore: ".$novel_autor;
+                */
                 ?>
+                <center>
+                    <b>Non vedi il testo correttamente? Prova la versione desktop</b>
+                </center>
+                <br>
             </div>
             <div class="novel-txt">
-                <div>
-                    <button id="prev"><<<<<<<<</button>
-                    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-                    <button id="next">>>>>>>>></button>
-                    &nbsp; &nbsp;
+                <div id="novel-navigation-top">
+                    <center>
+                        <button id="prev_top" class="btn btn-secondary btn-sm"><<<<<<<<</button>
+                        <span id="page_num_top"></span> / <span id="page_count_top"></span>
+                        <button id="next_top" class="btn btn-primary btn-sm">>>>>>>>></button>
+                        &nbsp; &nbsp;
+                    </center>
                 </div>
+                <hr>
                 <canvas id="novel-pdf">
                 </canvas>
+                <hr>
+                <div id="novel-navigation-down">
+                    <center>
+                        <button id="prev_down" class="btn btn-secondary btn-sm"><<<<<<<<</button>
+                        <span id="page_num_down"></span> / <span id="page_count_down"></span>
+                        <button id="next_down" class="btn btn-primary btn-sm">>>>>>>>></button>
+                        &nbsp; &nbsp;
+                    </center>
+                </div>
             </div>
         </div>
 
         <!--- SCRIPTS !--->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="../../js/responsive.js"></script>
         <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
         <script>
             //Codice per visualizzare a video il pdf
@@ -248,7 +268,8 @@
                 });
 
                 // Update page counters
-                document.getElementById('page_num').textContent = num;
+                document.getElementById('page_num_down').textContent = num;
+                document.getElementById('page_num_top').textContent = num;
             }
 
             /**
@@ -274,7 +295,8 @@
                 queueRenderPage(pageNum);
             }
 
-            document.getElementById('prev').addEventListener('click', onPrevPage);
+            document.getElementById('prev_top').addEventListener('click', onPrevPage);
+            document.getElementById('prev_down').addEventListener('click', onPrevPage);
 
             /**
              * Displays next page.
@@ -286,34 +308,18 @@
                 pageNum++;
                 queueRenderPage(pageNum);
             }
-            document.getElementById('next').addEventListener('click', onNextPage);
+            document.getElementById('next_top').addEventListener('click', onNextPage);
+            document.getElementById('next_down').addEventListener('click', onNextPage);
 
             /**
              * Asynchronously downloads PDF.
              */
             pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
                 pdfDoc = pdfDoc_;
-                document.getElementById('page_count').textContent = pdfDoc.numPages;
+                document.getElementById('page_count_top').textContent = pdfDoc.numPages;
+                document.getElementById('page_count_down').textContent = pdfDoc.numPages;
 
                 // Initial/first page rendering
-                renderPage(pageNum);
-            });
-
-            //JQuey responsive
-
-
-            $(window).on('resize', function(){
-                var win = $(this); //this = window
-                //if (win.height() >= 820) { /* ... */ }
-                if (win.width() <= 768)
-                { 
-                    /* ... */ 
-                    scale = 0.55;
-                } else
-                {
-                    scale = 1;
-                }
-
                 renderPage(pageNum);
             });
         </script>

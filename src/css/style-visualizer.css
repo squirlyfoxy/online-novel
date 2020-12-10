@@ -1,11 +1,18 @@
+#novel-navigation-top
+{
+    padding-top: 15px;
+    display: inline;
+}
+
+#novel-navigation-down
+{
+    padding-bottom: 15px;
+    display: none;
+}
+
 .novel-txt
 {
     text-align: center;
-}
-
-footer
-{
-    padding-top: 100px;
 }
 
 .novel-info-desktop
@@ -18,7 +25,12 @@ footer
     display: none;
 }
 
-@media only screen and (max-width: 768px)
+.container-fluid
+{
+    padding-top: 15px;
+}
+
+@media only screen and (max-width: 950px)
 {
     .novel-info-desktop
     {
@@ -27,6 +39,10 @@ footer
 
     .novel-info-phone
     {
+        /*
+        padding-top: 15px;
+        width: 100%;
+        text-align: center;*/
         display: inline;
     }
 }
