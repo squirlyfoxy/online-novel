@@ -207,6 +207,7 @@
         <!--- SCRIPTS !--->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="../../js/responsive.js"></script>
+        <script src="../../js/key-listener.js"></script>
         <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
         <script>
             //Codice per visualizzare a video il pdf
@@ -235,7 +236,7 @@
             } else{
                 scale = 0.55;
             }
-
+            
             /**
              * Get page info from document, resize canvas accordingly, and render page.
              * @param num Page number.
@@ -243,6 +244,12 @@
             function renderPage(num) {
                     pageRendering = true;
                 
+                    if(pdfDoc == null)
+                    {
+                        alert("Impossibile trovare il file PDF :(");
+                        window.location.replace("../");
+                    }
+                    
                     // Using promise to fetch the page
                     pdfDoc.getPage(num).then(function(page) {
                     var viewport = page.getViewport({ scale: scale });
@@ -308,6 +315,7 @@
                 pageNum++;
                 queueRenderPage(pageNum);
             }
+            
             document.getElementById('next_top').addEventListener('click', onNextPage);
             document.getElementById('next_down').addEventListener('click', onNextPage);
 
