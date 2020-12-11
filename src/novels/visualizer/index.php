@@ -159,22 +159,22 @@
         </nav>
 
         <div class="container-fluid">
+            <center>
+                <h1><?php echo $novel_name; ?></h1>
+            </center>
             <div class="novel-info-desktop">
-                <?php
-                    //Visualizzare le info del romanzo
-                    echo "Nome: ".$novel_name.'<br>';
-                    echo "Autore: ".$novel_autor;
-                ?>
+                <?php echo '<img class="card-img-top" src="../../img/upload/'.$novel_copertina.'" alt="'.$novel_name.'" style="width:150px;height:200px;display: inline-block;vertical-align: top;">'; ?>
+                <div class="txt" style="display: inline-block;">
+                    <?php 
+                        //TODO: Aggiungere possibilità di mettere mi piace
+                        echo 'Autore: <b>'.$novel_name.'</b> <br><br>
+                        Tradotto Da: <b>'.$novel_translators.'</b> <br><br>
+                        Pubblicato Il: <b>'.$novel_added_at.'</b> <br><br>
+                        Likes: <b>'.$novel_likes.'</b> <br><br>'; ?>
+                </div>
                 <br>
             </div>
             <div class="novel-info-phone">
-                <?php
-                /*
-                    //Visualizzare le info del romanzo
-                    echo "Nome: ".$novel_name.'<br>';
-                    echo "Autore: ".$novel_autor;
-                */
-                ?>
                 <center>
                     <b>Non vedi il testo correttamente? Prova la versione desktop</b>
                 </center>
@@ -202,6 +202,7 @@
                     </center>
                 </div>
             </div>
+            &nbsp; &nbsp;
         </div>
 
         <!--- SCRIPTS !--->
@@ -293,6 +294,8 @@
                     return;
                 }
                 pageNum--;
+                //TODO: Codice PHP per aggiornare la pagina letta sul database
+
                 queueRenderPage(pageNum);
             }
 
@@ -307,6 +310,8 @@
                     return;
                 }
                 pageNum++;
+                //TODO: Codice PHP per aggiornare la pagina letta sul database
+
                 queueRenderPage(pageNum);
             }
 
