@@ -243,12 +243,6 @@
              */
             function renderPage(num) {
                     pageRendering = true;
-                
-                    if(pdfDoc == null)
-                    {
-                        alert("Impossibile trovare il file PDF :(");
-                        window.location.replace("../");
-                    }
                     
                     // Using promise to fetch the page
                     pdfDoc.getPage(num).then(function(page) {
@@ -315,7 +309,7 @@
                 pageNum++;
                 queueRenderPage(pageNum);
             }
-            
+
             document.getElementById('next_top').addEventListener('click', onNextPage);
             document.getElementById('next_down').addEventListener('click', onNextPage);
 
@@ -329,6 +323,9 @@
 
                 // Initial/first page rendering
                 renderPage(pageNum);
+            }).catch(function(error){
+                alert("Errore durante la richiesta del documento PDF, impossibile visualizzare il testo :(");
+                window.location.replace("../");
             });
         </script>
 
