@@ -9,7 +9,7 @@ CREATE TABLE `novels` (
   `copertina` text NOT NULL,
   `autore` text NOT NULL,
   `translators` text NOT NULL,
-  `text` longtext NOT NULL,
+  `pdf_name` text NOT NULL,
   `added_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `likes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
