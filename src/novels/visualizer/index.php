@@ -106,11 +106,13 @@
         <!--- BOOTSTRAP !--->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+        <!--- ICONS !--->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <!--- CUSTOM CSS !--->
         <link rel="stylesheet" href="../../css/nav-bar.css?version=234234">
         <link rel="stylesheet" href="../../css/style-novels.css?version=345345">
         <link rel="stylesheet" href="../../css/style-visualizer.css?version=112">
-
         <title>Online Novels - 
             <?php
                 //Codice per visualizzare il nome del romanzo
@@ -173,6 +175,7 @@
                         Likes: <b>'.$novel_likes.'</b> <br><br>'; ?>
                 </div>
                 <br>
+                <br>
             </div>
             <div class="novel-info-phone">
                 <center>
@@ -180,8 +183,19 @@
                 </center>
                 <br>
             </div>
+            <div class="navigator" style="
+                    float: left;">
+                <button type="button" class="btn btn-primary" onclick="downloadPDF('<?php echo $novel_pdf_name; ?>')"><i class="fa fa-download"></i> Download PDF</button>
+                <?php
+                    //TODO: Codice per far vedere il pulsante per mettere o togliere il dislike, dipende tutto dall'utente
+                    //<button type="button" class="btn btn-primary" ><i class="fa fa-thumbs-up"></i> Like</button>
+                ?>
+            </div>
+            <br>
+            <br>      
             <div class="novel-txt">
                 <div id="novel-navigation-top">
+                    <hr>
                     <center>
                         <button id="prev_top" class="btn btn-secondary btn-sm"><<<<<<<<</button>
                         <span id="page_num_top"></span> / <span id="page_count_top"></span>
@@ -209,6 +223,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="../../js/responsive.js"></script>
         <script src="../../js/key-listener.js"></script>
+        <script src="../../js/buttons-events-listener.js"></script>
         <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
         <script>
             //Codice per visualizzare a video il pdf
