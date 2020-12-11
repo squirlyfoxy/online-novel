@@ -5,8 +5,6 @@
 
     session_start();
 
-
-
     $DAYS_TO_REMOVE = 7;
 
     $usr_name = "";
