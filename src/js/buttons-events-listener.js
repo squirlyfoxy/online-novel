@@ -9,4 +9,3 @@ function downloadPDF(nFile)
 {
     window.location.replace("./upload/" + nFile);
 }
-

@@ -5,7 +5,7 @@
 
     $what_do = $_GET['w'];
 
-    //OPttieni le informazioni prese dal form in post
+    //Ottieni le informazioni prese dal form in post
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if($what_do == "log-in")
@@ -27,15 +27,11 @@
     {
         require_once("../php/server-connector.php");
 
-        if(isset($_POST['email']) && isset($_POST['password']))
+        if((isset($_POST['email']) && isset($_POST['password'])) ||
+            !(empty($_POST['email']) || empty($_POST['password'])))
         {
             $email_submitted = $_POST['email'];
             $password_submitted = md5($_POST['password']);
-
-            if($_POST['email'] == "" || $_POST['password'] == "")
-            {
-                header("location: ./");
-            }
 
             if($usr_query_result = $connection->query("SELECT * FROM users WHERE `usr_name` == '".$email_submitted."' AND `usr_password` == '".$password_submitted."'"))
             {
@@ -85,6 +81,8 @@
                                 //SIAMO PRONTI PER AGGIUNGERE L'UTENTE
 
                                 //TODO: Query per aggiungere l'utente alla tabella users
+
+                                //TODO: Crea la session "utente", siamo già loggati di default
                             } else
                             {
                                 //REDIRECT ALLA PAGINA PRECEDENTE CON UN MESSAGGIO DI ERRORE
