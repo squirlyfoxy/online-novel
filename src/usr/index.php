@@ -26,6 +26,7 @@
     
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../css/style-user.css?version=234234">
+    <link rel="stylesheet" href="../css/nav-bar.css?version=234234">
 
     <title>Online Novels - LogIn</title>
   </head>
