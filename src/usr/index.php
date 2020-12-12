@@ -1,9 +1,16 @@
 <?php
-  // Programmer: Leonardo Baldazzi (@squirlyfoxy), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
-
-  include_once("../php/server-connector.php");
+  // Programmer: Leonardo Baldazzi, Tommaso Brandinelli (@squirlyfoxy, @MayonaiseMan), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
 
   session_start();
+
+  $er;
+  if($_SERVER['REQUEST_METHOD'] == 'GET')
+  {
+    if(isset($_GET['er']))
+    {
+      $er = $_GET['er'];
+    }
+  }
 
   //TODO: Controlla se siamo già loggati
 ?>
@@ -24,7 +31,7 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="../index.php" >Home</a>
+        <a class="navbar-brand" href="../index.php" >Online Novels</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,27 +45,39 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="">Search</button>
-        </form>
-      </div>
+            <input class="form-control mr-sm-2" type="search" placeholder="Ricerca" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="">
+                <img src="../img/src.png" width="32" />
+            </button>
+          </form>
+        </div>
     </nav>
 
     <h1>Log In</h1>
 
-    <div class="container" id="input_dati_login" align="center">
-      <form method="POST">
-        <div class="form-group">
-            <h5>Email</h5>
-            <input type="email" class="form-control" id="InputEmailLogin" aria-describedby="emailHelp">
-        </div>
-        <div class="form-group">
-            <h5>Passworld</h5>
-            <input type="password" class="form-control" id="InputPasswordLogin">
-        </div>
-        <button type="submit" class="btnx btn-dark">Invia</button>
-        Non sei registrato? <a class="linkReidirizzamento" href="registrazione.php">Clicca qui</a>
-      </form>
+    <div class="container-fluid">
+      <div class="container" id="input_dati_login" align="center">
+        <form action="./processer.php?w=log-in" method="post" role="form">
+          <h5>Email</h5>
+          <input type="email" class="form-control" id="email" name="email">
+          <h5>Passworld</h5>
+          <input type="password" class="form-control" id="password" name="password"> <br>
+          <button type="submit" class="btnx btn-dark">Invia</button>
+          <?php
+            if($er = "not_found")
+            {
+              echo '
+                <br>
+                <br>
+                <div class="alert alert-danger" role="alert">
+                  Errore: Utente non trovato :(
+                </div>';
+            }
+          ?>
+          <hr>
+          Non sei registrato? <a class="linkReidirizzamento" href="registrazione.php">Clicca qui</a>
+        </form>
+      </div>
     </div>
 
     <!--- TODO: VISUALIZZA A VIDEO GLI ULTIMI POST E I NOMI DELLE SERIE PIù RECENTI !--->
