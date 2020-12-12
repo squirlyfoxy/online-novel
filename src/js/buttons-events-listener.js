@@ -9,3 +9,11 @@ function downloadPDF(nFile)
 {
     window.location.replace("./upload/" + nFile);
 }
+
+/*
+    Chiamato dal bottone "Like" nella pagina ./visualizer/index.php
+*/
+function likeNovel(usrID, novelID)
+{
+    //TODO: Richiamo il codice php adatto per aggiungere un mio like
+}

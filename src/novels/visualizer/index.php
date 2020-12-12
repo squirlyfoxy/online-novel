@@ -186,10 +186,7 @@
             <div class="navigator" style="
                     float: left;">
                 <button type="button" class="btn btn-primary" onclick="downloadPDF('<?php echo $novel_pdf_name; ?>')"><i class="fa fa-download"></i> Download PDF</button>
-                <?php
-                    //TODO: Codice per far vedere il pulsante per mettere o togliere il dislike, dipende tutto dall'utente
-                    //<button type="button" class="btn btn-primary" ><i class="fa fa-thumbs-up"></i> Like</button>
-                ?>
+                <button type="button" class="btn btn-primary"><i class="fas fa-thumbs-up"></i> Like</button>
             </div>
             <br>
             <br>      
@@ -214,6 +211,7 @@
                         <button id="next_down" class="btn btn-primary btn-sm">>>>>>>>></button>
                         &nbsp; &nbsp;
                     </center>
+                    <hr>
                 </div>
             </div>
             &nbsp; &nbsp;
