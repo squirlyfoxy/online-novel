@@ -3,7 +3,7 @@
 
   session_start();
 
-  $er;
+  $er = "";
   if($_SERVER['REQUEST_METHOD'] == 'GET')
   {
     if(isset($_GET['er']))
@@ -64,7 +64,8 @@
           <input type="password" class="form-control" id="password" name="password"> <br>
           <button type="submit" class="btnx btn-dark">Invia</button>
           <?php
-            if($er = "not_found")
+            //GESTIONE DEGLI ERRORI GET
+            if($er == "not_found")
             {
               echo '
                 <br>
@@ -72,7 +73,15 @@
                 <div class="alert alert-danger" role="alert">
                   Errore: Utente non trovato :(
                 </div>';
-            }
+            } else if ($er == "cams_not_filled")
+            {
+              echo '
+              <br>
+              <br>
+              <div class="alert alert-danger" role="alert">
+                Errore: Tutti i campi devono essere riempiti :(
+              </div>';
+            } 
           ?>
           <hr>
           Non sei registrato? <a class="linkReidirizzamento" href="registrazione.php">Clicca qui</a>

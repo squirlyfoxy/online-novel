@@ -2,6 +2,16 @@
   // Programmer: Leonardo Baldazzi, Tommaso Brandinelli (@squirlyfoxy, @MayonaiseMan), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
 
   session_start();
+
+  $er = "";
+  if($_SERVER['REQUEST_METHOD'] == 'GET')
+  {
+    if(isset($_GET['er']))
+    {
+      $er = $_GET['er'];
+    }
+  }
+
 ?>
 
 <!doctype html>
@@ -49,23 +59,51 @@
     <div class="container-fluid">
       <div class="container" id="input_dati_registratione" align="center">
         <form action="./processer.php?w=reg" method="POST">
-          <div class="form-group">
-              <h5>Username</h5>
-              <input type="text" class="form-control" id="InputUsernameRegistrazione">
-          </div>
-          <div class="form-group">
-              <h5>Email</h5>
-              <input type="email" class="form-control" id="InputEmailRegistrazioneConf">
-          </div>
-          <div class="form-group">
-              <h5>Passworld</h5>
-              <input type="password" class="form-control" id="InputPasswordRegistrazione">
-          </div>
-          <div class="form-group">
-              <h5>Conferma Passworld</h5>
-              <input type="password" class="form-control" id="InputPasswordRegistrazioneConf">
-          </div>
+          <h5>Username</h5>
+          <input type="text" class="form-control" id="username" name="username">
+          <h5>Email</h5>
+          <input type="email" class="form-control" id="email" name="email">
+          <h5>Passworld</h5>
+          <input type="password" class="form-control" id="password" name="password">
+          <h5>Conferma Passworld</h5>
+          <input type="password" class="form-control" id="password-check" name="password-check"> <br>
           <button type="submit" class="btnx btnx btn-dark">Invia</button>
+          <?php
+            //GESTIONE DEGLI ERRORI GET
+            if($er == "paswd_not_equals")
+            {
+              echo '
+                <br>
+                <br>
+                <div class="alert alert-danger" role="alert">
+                  Errore: Passwords non uguali :(
+                </div>';
+            } else if ($er == "cams_not_filled")
+            {
+              echo '
+              <br>
+              <br>
+              <div class="alert alert-danger" role="alert">
+                Errore: Tutti i campi devono essere riempiti :(
+              </div>';
+            } else if ($er == "usr_already_registered")
+            {
+              echo '
+              <br>
+              <br>
+              <div class="alert alert-danger" role="alert">
+                Errore: Esiste già un utente con questo nome utente :(
+              </div>';
+            } else if ($er == "email_already_registered")
+            {
+              echo '
+              <br>
+              <br>
+              <div class="alert alert-danger" role="alert">
+                Errore: Esiste già un utente con questa email :(
+              </div>';
+            }
+          ?>
           <hr>
           Sei già registrato? <a class="linkReidirizzamento" href="index.php"> Clicca qui</a>
         </form>
