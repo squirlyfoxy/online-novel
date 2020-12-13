@@ -23,3 +23,10 @@ CREATE TABLE `users` (
   `usr_password` text NOT NULL,
   `usr_image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+Tabella per la posizione attualmente letta dall'utente
+CREATE TABLE `novels_position` (
+  `novel_id` text NOT NULL,
+  `usr_id` int(11) NOT NULL,
+  `position_frame` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;5
