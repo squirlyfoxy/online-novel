@@ -3,6 +3,7 @@
 
     include_once("../php/server-connector.php");
 
+    session_set_cookie_params(0);
     session_start();
 
     $DAYS_TO_REMOVE = 7;
@@ -10,7 +11,7 @@
     $usr_name = "";
     $usr_id = 0;
     $user_icon = "../img/usr.png";
-    $is_logged;
+    $is_logged = false;
 
     //Devono essere solo i primi 10
     $last_series = array();

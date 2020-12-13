@@ -4,6 +4,7 @@
     include_once("../../php/server-connector.php");
     include_once("../../php/log.php");
 
+    session_set_cookie_params(0);
     session_start();
 
     // Variabili
@@ -71,7 +72,7 @@
     $usr_mail = "";
     $usr_id = 0;
     $user_icon = "";
-    $is_logged;
+    $is_logged = false;
 
     ///
     /// Codice per controllare se siamo loggati oppure no
