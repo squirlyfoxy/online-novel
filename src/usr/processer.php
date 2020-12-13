@@ -18,6 +18,9 @@
         {
             header("location: ./");
         }
+    } else
+    {
+        header("location: ./");
     }
 
     /*
