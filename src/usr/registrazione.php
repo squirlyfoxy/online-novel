@@ -12,6 +12,14 @@
     }
   }
 
+  //Controlla se siamo già loggati
+  if(isset($_SESSION['logged']))
+  {
+    if(($_SESSION['logged']) == true)
+    {
+      header("location: ./about");
+    }
+  }
 ?>
 
 <!doctype html>
@@ -58,7 +66,7 @@
     <h1>Registrati</h1>
 
     <div class="container-fluid">
-      <div class="container" id="input_dati_registratione" align="center">
+      <div class="container" id="input_dati_registratione">
         <form action="./processer.php?w=reg" method="POST">
           <h5>Username</h5>
           <input type="text" class="form-control" id="username" name="username">

@@ -12,7 +12,14 @@
     }
   }
 
-  //TODO: Controlla se siamo già loggati
+  //Controlla se siamo già loggati
+  if(isset($_SESSION['logged']))
+  {
+    if(($_SESSION['logged']) == true)
+    {
+      header("location: ./about");
+    }
+  }
 ?>
 
 <!doctype html>
@@ -57,7 +64,7 @@
     <h1>Log In</h1>
 
     <div class="container-fluid">
-      <div class="container" id="input_dati_login" align="center">
+      <div class="container" id="input_dati_login">
         <form action="./processer.php?w=log-in" method="post" role="form">
           <h5>Email</h5>
           <input type="email" class="form-control" id="email" name="email">

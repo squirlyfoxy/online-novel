@@ -33,16 +33,38 @@
             $email_submitted = $_POST['email'];
             $password_submitted = md5($_POST['password']);
 
-            if($usr_query_result = $connection->query("SELECT * FROM users WHERE `usr_name` == '".$email_submitted."' AND `usr_password` == '".$password_submitted."'"))
+            $usr_query_result = $connection->query("SELECT * FROM users WHERE `usr_email` = '".$email_submitted."' AND `usr_password` = '".$password_submitted."'");
+
+            if(!empty($usr_query_result) && $usr_query_result->num_rows > 0)
             {
-                if($usr_query_result == 1)
-                {
-                    //TODO: Valida l'utente
-                } else
-                {
+                //if(count($usr_query_result) == 1)
+                //{
+                    while($row = $usr_query_result->fetch_assoc())
+                    {
+                        //Session
+                        $usr_mail = $row['usr_email'];
+                        $usr_name = $row['usr_name'];
+                        $usr_id = $row['id'];
+                        $usr_image = $row['usr_image'];
+
+                        $_SESSION['usr_name'] = $usr_name;
+                        $_SESSION['usr_mail'] = $usr_mail;
+                        $_SESSION['usr_id'] = $usr_id;
+                        $_SESSION['usr_image'] = $usr_image;
+
+                        $_SESSION['logged'] = true;
+
+                        header("location: ./about/");
+                    }
+                //} else
+                //{
                     //REDIRECT ALLA PAGINA PRECEDENTE CON UN MESSAGGIO DI ERRORE
-                    header("location: ./?er=not_found");
-                }
+                    //header("location: ./?er=not_found");
+                //}
+            } else
+            {
+                //REDIRECT ALLA PAGINA PRECEDENTE CON UN MESSAGGIO DI ERRORE
+                header("location: ./?er=not_found");
             }
         } else
         {
@@ -69,31 +91,62 @@
             if($user_password == $user_password_check)
             {
                 //CONTROLLA SE ESISTE UN UTENTE CON QUESTO NOME UTENTE
-                if($usr_name_query_result = $connection->query("SELECT * FROM users WHERE `usr_name` == '".$user_name."'"))
+                $usr_name_query_result = $connection->query("SELECT * FROM users WHERE `usr_name` == '".$user_name."'");
+
+                if(!empty($usr_name_query_result) && $usr_name_query_result->num_rows == 0)
                 {
-                    if($usr_name_query_result->num_rows == 0)
-                    {
+                    //if()
+                    //{
+                        $usr_email_query_result = $connection->query("SELECT * FROM users WHERE `usr_email` == '".$user_email."'");
                         //CONTROLLA SE ESISTE UN UTENTE CON QUESTA EMAIL
-                        if($usr_email_query_result = $connection->query("SELECT * FROM users WHERE `usr_email` == '".$user_email."'"))
-                        {
-                            if($usr_email_query_result->num_rows == 0)
+                        //if($usr_email_query_result)
+                        //{
+                            if(!empty($usr_email_query_result) && $usr_email_query_result->num_rows == 0)
                             {
                                 //SIAMO PRONTI PER AGGIUNGERE L'UTENTE
 
-                                //TODO: Query per aggiungere l'utente alla tabella users
+                                //Query per aggiungere l'utente alla tabella users
+                                if($connection->query("INSERT INTO `users`(`id`, `usr_name`, `usr_email`, `usr_password`, `usr_image`) VALUES ('', '$user_name','$user_email','$user_password','default')") == true) 
+                                {
+                                    //Session
+                                    $_SESSION['usr_name'] = $user_name;
+                                    $_SESSION['usr_mail'] = $user_email;
 
-                                //TODO: Crea la session "utente", siamo già loggati di default
+                                    $usr_id = 0;
+                                    //Ottengo l'ID del nuovo utente
+                                    if($id_result = $connection->query("SELECT * FROM users WHERE `usr_name` == '".$user_name."'"))
+                                    {
+                                        if(count($id_result) == 1)
+                                        {
+                                            while($row = $id_result->fetch_assoc())
+                                            {
+                                                $usr_id = $row['id'];
+                                            }
+                                        }
+                                    }
+
+                                    $_SESSION['usr_image'] = "default";
+                                    $_SESSION['usr_id'] = $usr_id;
+            
+                                    $_SESSION['logged'] = true;
+
+                                    header("location: ./about/");
+                                } else
+                                {
+                                    //Errore
+                                    echo "Error: <br>" . $connection->error;
+                                }
                             } else
                             {
                                 //REDIRECT ALLA PAGINA PRECEDENTE CON UN MESSAGGIO DI ERRORE
                                 header("location: ./registrazione.php?er=email_already_registered");
                             }
-                        }
-                    } else
-                    {
-                        //REDIRECT ALLA PAGINA PRECEDENTE CON UN MESSAGGIO DI ERRORE
-                        header("location: ./registrazione.php?er=usr_already_registered");
-                    }
+                        //}
+                    //}
+                } else
+                {
+                    //REDIRECT ALLA PAGINA PRECEDENTE CON UN MESSAGGIO DI ERRORE
+                    header("location: ./registrazione.php?er=usr_already_registered");
                 }
             } else
             {

@@ -86,24 +86,23 @@
     /// Codice per avere l'icona dell'utente
     ///
 
-    //Non useremo il post ma il session
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    if(isset($_SESSION['logged']))
     {
-        //PER POST RICEVO LE INFORMAZIONI DELL'UTENTE
+        if(($_SESSION['logged']) == true)
+        {
+            $is_logged = true;
+            $usr_name = $_SESSION['usr_name'];
+            $usr_id = $_SESSION['usr_id'];
+            $usr_mail = $_SESSION['usr_mail'];
 
-        //Controlla se sono giuste confrontandole con il database
-    }
-
-    //Se non ricevo nulla vuol dire che non sono loggato, quindi:
-    if($usr_name == "" && $usr_name == "")
-    {
-        $is_logged = false;
-    } else if($usr_name != "" && $usr_name != "")
-    {
-        $is_logged = true;
-    } else
-    {
-        $is_logged = false;
+            if($_SESSION['usr_image'] == "default")
+            {
+                $user_icon = "../img/usr.png";
+            } else
+            {
+                $user_icon = $_SESSION['usr_image'];
+            }
+        }
     }
 
 ?>

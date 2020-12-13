@@ -51,12 +51,14 @@ img#right
 
 #input_dati_registratione
 {
-    width: 200px;
+  text-align: center;
+  width: 200px;
 }
 
 #input_dati_login
 {
-    width: 200px;
+  text-align: center;
+  width: 200px;
 }
 
 #footer
