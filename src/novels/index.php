@@ -149,7 +149,7 @@
                                 //Informazioni dell'utente loggato
                                 echo '<a class="nav-link" id="right" href="../usr/about/">'.$usr_name.'</a>';
                             }
-                            echo '<img id="right" src="'.$user_icon.'" width="32" />';
+                            echo '<img id="right" src="'.$user_icon.'" class="rounded-circle" width="32" style="margin-left: 5px; margin-right: 10px;" />';
                         ?>
                     </li>
                 </ul>   

@@ -11,6 +11,13 @@
     {
       $er = $_GET['er'];
     }
+    {
+      header("location: ./");
+    }
+    
+  } else
+  {
+    header("location: ./");
   }
 
   //Controlla se siamo già loggati

@@ -1,10 +1,45 @@
 <?php
     // Programmer: Leonardo Baldazzi, Tommaso Brandinelli (@squirlyfoxy, @MayonaiseMan), Contacts: foxchannel16@gmail.com, leonardo.baldazzi2003@gmail.com
 
-    //TODO: PAGINA PER GESTIRE IL PROPRIO PROFILO
+    //PAGINA PER GESTIRE IL PROPRIO PROFILO
     
     session_set_cookie_params(0);
     session_start();
+
+    ///
+    /// Codice per controllare se siamo loggati oppure no
+    /// Codice per avere l'icona dell'utente
+    ///
+
+    $usr_name = "";
+    $usr_mail = "";
+    $usr_id = 0;
+    $user_icon = "";
+    $is_logged = false;
+
+    ///
+    /// Codice per controllare se siamo loggati oppure no
+    /// Codice per avere l'icona dell'utente
+    ///
+
+    if(isset($_SESSION['logged']))
+    {
+        if(($_SESSION['logged']) == true)
+        {
+            $is_logged = true;
+            $usr_name = $_SESSION['usr_name'];
+            $usr_id = $_SESSION['usr_id'];
+            $usr_mail = $_SESSION['usr_mail'];
+
+            if($_SESSION['usr_image'] == "default")
+            {
+                $user_icon = "../../img/usr.png";
+            } else
+            {
+                $user_icon = $_SESSION['usr_image'];
+            }
+        }
+    }
 ?>
 
 <html lang="it">
@@ -15,6 +50,10 @@
 
         <!-- BOOTSTRAP CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" href="../../css/nav-bar.css?version=234234">
+        <link rel="stylesheet" href="../../css/style-about-user.css?version=234234">
 
         <title>Online Novels - Profilo</title>
     </head>
@@ -44,6 +83,44 @@
         </nav>
 
         <div class="container-fluid">
+
+            <div class="usr">
+                <div class="usr-info">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <?php
+                                echo '
+                                    <img src="'.$user_icon.'" class="rounded-circle" alt="Immagine Profilo" width="100"/>';
+                            ?>
+                        </div>
+                        <div class="panel-body">
+                            <br>
+                            <?php
+                                echo '<b>@'.$usr_name.'</b>#'.$usr_id;
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2>Mi Piace</h2>
+                <div class="mi-piace">
+                    <?php
+                        //TOOD: BACKEND PER VISUALIZZARE I MIEI MI PIACE
+                    ?>
+                </div>
+                <h2>Sta Leggendo</h2>
+                <div class="reading">
+                    <?php
+                        //TOOD: BACKEND PER VISUALIZZARE I Romanzi che sto leggendo
+                    ?>
+                </div>
+                <h2>Posts</h2>
+                <div class="posts">
+                    <?php
+                        //TOOD: BACKEND PER VISUALIZZARE I POSTS E PER FARNE/MODIFICARNE UNO
+                    ?>
+                </div>
+            </div>
         </div>
 
         <!--- SCRIPTS !--->
