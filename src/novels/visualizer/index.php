@@ -4,7 +4,9 @@
     include_once("../../php/server-connector.php");
     include_once("../../php/log.php");
 
-    session_set_cookie_params(0);
+    if(!isset($_SESSION))
+        session_set_cookie_params(0);
+
     session_start();
 
     // Variabili
@@ -17,6 +19,8 @@
     $novel_likes = "";
     $novel_added_at = "";
     $position_frame = "";
+
+    $gia_like = false;
 
     /// Per get io avrò la posizione e l'id del romanzo. Se non ricevo nulla visualizzo alcuni romanzi a video
     if($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -95,6 +99,21 @@
             {
                 $user_icon = $_SESSION['usr_image'];
             }
+        }
+    }
+
+    //Controlla se ho messo mi piace a questo novel
+    if($selected_novel_like = $connection->query("SELECT * FROM `novels_likes` WHERE `usr_id`='".$usr_id."' AND `novel_id`='".$novel_id."'"))
+    {
+        //SETTA A TRUE SE HA TROVATO QUALCOSA
+        $rows = 0;
+
+        while($row = $selected_novel_like->fetch_assoc())
+            $rows++;
+
+        if($rows == 1)
+        {
+            $gia_like = true;
         }
     }
 ?>
@@ -187,7 +206,25 @@
             <div class="navigator" style="
                     float: left;">
                 <button type="button" class="btn btn-primary" onclick="downloadPDF('<?php echo $novel_pdf_name; ?>')"><i class="fa fa-download"></i> Download PDF</button>
-                <button type="button" class="btn btn-primary" onclick="likeNovel('<?php echo $usr_id; ?>', '<?php echo $novel_id; ?>')"><i class="fa fa-thumbs-up"></i> Like</button>
+
+                <?php
+                    //Bottone per cavare o aggiungere un like
+                    $redirect = "'?novel_id=".$novel_id."&position_frame=".$position_frame."'";
+                    $usr_id_str = "'".$usr_id."'";
+                    $novel_id_str = "'".$novel_id."'";
+
+                    if($gia_like)
+                    {
+                        echo '
+                            <button type="button" class="btn btn-primary" onclick="unlikeNovel('.$usr_id_str.', '.$novel_id_str.', '.$redirect.')"><i class="fa fa-thumbs-up"></i> Unlike</button>
+                            ';
+                    } else
+                    {
+                        echo '
+                            <button type="button" class="btn btn-primary" onclick="likeNovel('.$usr_id_str.', '.$novel_id_str.', '.$redirect.')"><i class="fa fa-thumbs-up"></i> Like</button>
+                            ';
+                    }
+                ?>
             </div>
             <br>
             <br>      

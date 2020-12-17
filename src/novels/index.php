@@ -3,10 +3,12 @@
 
     include_once("../php/server-connector.php");
 
-    session_set_cookie_params(0);
+    if(!isset($_SESSION))
+        session_set_cookie_params(0);
+        
     session_start();
 
-    $DAYS_TO_REMOVE = 7;
+    $DAYS_TO_REMOVE = 20;
 
     $usr_name = "";
     $usr_id = 0;

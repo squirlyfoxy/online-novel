@@ -13,7 +13,22 @@ function downloadPDF(nFile)
 /*
     Chiamato dal bottone "Like" nella pagina ./visualizer/index.php
 */
-function likeNovel(usrID, novelID)
+function likeNovel(usrID, novelID, redirect)
 {
-    //TODO: Richiamo il codice php adatto per aggiungere un mio like
+    //Richiamo il codice php adatto per aggiungere un mio like
+    if(usrID == 0)
+    {
+        window.location.replace("../../usr/?redirect=../novels/visualizer/'" + redirect + "'");
+    } else
+    {
+        window.location.replace("../../php/add-like.php?usr_id=" + usrID + "&novel_id=" + novelID + "&redirect=" + redirect);
+    }
+}
+
+/*
+    Chiamato dal bottone "Unlike" nella pagina ./visualizer/index.php
+*/
+function unlikeNovel(usrID, novelID, redirect)
+{
+
 }
