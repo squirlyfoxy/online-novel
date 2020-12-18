@@ -6,6 +6,9 @@
     session_set_cookie_params(0);
     session_start();
 
+    if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false)
+        header("location: ../");
+
     ///
     /// Codice per controllare se siamo loggati oppure no
     /// Codice per avere l'icona dell'utente

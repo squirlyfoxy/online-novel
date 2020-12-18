@@ -209,6 +209,8 @@
 
                 <?php
                     //Bottone per cavare o aggiungere un like
+
+                    //TODO: FAR FUNZIONARE IL REDIRECT
                     $redirect = "'?novel_id=".$novel_id."&position_frame=".$position_frame."'";
                     $usr_id_str = "'".$usr_id."'";
                     $novel_id_str = "'".$novel_id."'";

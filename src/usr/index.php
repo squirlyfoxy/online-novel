@@ -5,12 +5,20 @@
   session_start();
 
   $er = "";
+  $redirect = "";
+
   if($_SERVER['REQUEST_METHOD'] == 'GET')
   {
     if(isset($_GET['er']))
     {
       $er = $_GET['er'];
     }
+/*
+    //not working
+    if(isset($_GET['redirect']))
+    {
+      $redirect = $_GET['redirect'];
+    }*/
   }
 
   //Controlla se siamo già loggati
@@ -66,7 +74,10 @@
 
     <div class="container-fluid">
       <div class="container" id="input_dati_login">
-        <form action="./processer.php?w=log-in" method="post" role="form">
+        <form action="./processer.php?w=log-in<?php
+            if($redirect != "")
+             echo "&redirect=".$redirect;
+          ?>" method="post" role="form">
           <h5>Email</h5>
           <input type="email" class="form-control" id="email" name="email">
           <h5>Passworld</h5>
@@ -74,6 +85,8 @@
           <button type="submit" class="btnx btn-dark">Invia</button>
           <?php
             //GESTIONE DEGLI ERRORI GET
+  echo $redirect;
+
             if($er == "not_found")
             {
               echo '

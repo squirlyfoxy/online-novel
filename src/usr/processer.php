@@ -3,7 +3,19 @@
     session_set_cookie_params(0);
     session_start();
 
-    $what_do = $_GET['w'];
+    $redirect = "a";
+
+    //NON FUNZIONA
+    if(isset($_GET['redirect']))
+        $redirect = $_GET['redirect'];
+
+    if(isset($_GET['w']))
+        $what_do = $_GET['w'];
+    else
+        header("location: ./");
+/*
+    if(isset($_GET['redirect']) || $_GET['redirect'] != "")
+        $redirect = $_GET['redirect'];*/
 
     //Ottieni le informazioni prese dal form in post
     if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -56,9 +68,13 @@
                         $_SESSION['usr_image'] = $usr_image;
 
                         $_SESSION['logged'] = true;
-
+/*
+                        if($redirect == "")
+                            header("location: ./about/");
+                        else
+                            header("location: " + $redirect);*/
                         header("location: ./about/");
-                    }
+                        }
                 //} else
                 //{
                     //REDIRECT ALLA PAGINA PRECEDENTE CON UN MESSAGGIO DI ERRORE
@@ -133,7 +149,10 @@
             
                                     $_SESSION['logged'] = true;
 
-                                    header("location: ./about/");
+                                    if($redirect == "")
+                                        header("location: ./about/");
+                                    else
+                                        header("location: " + $redirect);
                                 } else
                                 {
                                     //Errore
