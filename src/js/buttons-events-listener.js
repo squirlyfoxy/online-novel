@@ -30,5 +30,12 @@ function likeNovel(usrID, novelID, redirect)
 */
 function unlikeNovel(usrID, novelID, redirect)
 {
-
+    //Richiamo il codice php per cancellare il like
+    if(usrID == 0)
+    {
+        window.location.replace("../../usr/?redirect=../novels/visualizer/" + redirect);
+    } else
+    {
+        window.location.replace("../../php/rem-like.php?usr_id=" + usrID + "&novel_id=" + novelID + "&redirect=" + redirect);
+    }
 }
